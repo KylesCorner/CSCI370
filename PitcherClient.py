@@ -6,7 +6,7 @@ CSCI370
 
 """
 
-from BaseballStats import Player
+import BaseballStats as bs
 
 
 def main():
@@ -17,10 +17,13 @@ def main():
              "rangersuarez.csv", "christophersanchez.csv"]
     names = ["Aaron Nola", "Zack Wheeler", "Taijuan Walker",
              "Ranger Suarez", "Christopher Sanchez"]
-    players = [Player(name, path, arguments)
+    players = [bs.Player(name, path, arguments)
                for path, name in list(zip(paths, names))]
 
+    stats = bs.BaseballStats(players)
+
     [print(player.get_name()) for player in players]
+    print(stats.get_pitches_vs_onbase())
 
 
 if __name__ == "__main__":
