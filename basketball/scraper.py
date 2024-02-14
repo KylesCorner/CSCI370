@@ -8,6 +8,7 @@ scraper.py
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+import re
 
 PLAYER_STAT_NAMES = ['date', 'team', 'opp', 'result', 'gs', 'mp', 'fg', 'fga', 'fg%', '3p', '3pa',
                      '3p%', 'ft', 'fta', 'ft%', 'orb', 'drb', 'trb', 'ast', 'stl', 'blk', 'tov', 'pf', 'pts', 'game_score', 'plus_minus']
@@ -35,19 +36,14 @@ def player_parse(player_id):
 
 def main():
     # player_parse("vassede01")
-    url = 'https://www.basketball-reference.com/players/v/vassede01.html'
+    playerName = ["Paul", "Reed"]
+    playerid = f"{playerName[1][0:5].lower()}{playerName[0][0:2].lower()}"
+    url = 'https://www.basketball-reference.com/teams/PHI/2024.html'
     r = requests.get(url)
     soup = BeautifulSoup(r.content, 'html.parser')
-
-    table = soup.find_all('table')
-    dfs = pd.read_html(url)
-    last5 = dfs[0]
-
-    print(type(last5.loc[0, "PTS"]))
-    dfs = pd.read_html(
-        "https://www.basketball-reference.com/teams/BOS/2024.html")
-
-    print(dfs)
+    s = soup.select(f"a[href*={playerid}]")
+    content = soup.find("a", href=re.compile(playerid))
+    print(content.get("href"))
 
 
 if __name__ == "__main__":

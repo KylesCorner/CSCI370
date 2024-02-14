@@ -1,0 +1,13 @@
+ATL,Trae Young
+BOS,Jaylen Brown
+LAL,LeBron James
+PHI,Tobias Harris
+BOS,Kristaps Porzingis
+LAC,Russell Westbrook
+BKN,Nic Claxton
+LAL,Christian Wood
+MIN,Kyle Anderson
+IND,T.J. McConnell
+BOS,Al Horford
+CHA,Miles Bridges
+LAC,Norman Powell
