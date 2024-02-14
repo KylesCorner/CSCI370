@@ -13,7 +13,10 @@ from BasketballStats import Team
 
 def pull_data(team_and_player: tuple):
     team, player = team_and_player
-    return Team(team).get_player(player)
+    df = Team(team).get_player(player)
+    print(df.get_gamelog())
+    df.get_gamelog().to_csv(path_or_buf="test.csv")
+    return df
 
 
 def gather_input() -> list:
