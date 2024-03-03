@@ -94,7 +94,7 @@ class Player:
         steals = game_logs["STL"].mean() * 3
         blocks = game_logs["BLK"].mean() * 3
         turnovers = game_logs["TOV"].mean()
-        mean_points = (rebounds + assists + steals +
+        mean_points = (points + rebounds + assists + steals +
                        blocks - turnovers) / self._get_minuets_played()
 
         return mean_points
