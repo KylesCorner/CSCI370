@@ -71,14 +71,22 @@ class gui:
                 fPoints = pd.DataFrame(
                     self.get_points_per_min(self.data[index]))
 
+                # TODO: Change colors of the lines, and set legend to top left of graph
                 self.axs[index].hlines(
                     y=AVG_FG_PERC, xmin=0, xmax=60, color='r')
+                self.axs[index].hlines(
+                    y=usageRate.mean(), xmin=0, xmax=60
+                )
+                self.axs[index].hlines(
+                    y=fPoints.mean(), xmin=0, xmax=60
+                )
                 self.axs[index].title.set_text(playerName)
                 self.axs[index].plot(self.data[index]["FG_PCT"])
                 self.axs[index].plot(usageRate)
                 self.axs[index].plot(fPoints)
+
                 self.axs[index].legend(
-                    ["AVG FG%", "FG%", "Usage Rate", "Fantasy Points"])
+                    ["AVG FG%", "AVG Usage Rate", "AVG Fantasy Points", "FG%", "Usage Rate", "Fantasy Points"])
             else:
                 usageRate = pd.DataFrame(self.get_usage_rate(self.data))
                 fPoints = pd.DataFrame(self.get_points_per_min(self.data))

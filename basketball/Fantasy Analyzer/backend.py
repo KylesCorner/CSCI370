@@ -7,7 +7,6 @@ backend.py
 
 """
 from nba_api.stats.endpoints import playergamelog
-import pandas as pd
 
 
 def read_config():
